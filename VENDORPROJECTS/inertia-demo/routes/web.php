@@ -26,7 +26,13 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+         'notifications' => [
+            'Welcome back!',
+            'Your subscription is active.',
+            'New message from Admin.'
+        ]
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
